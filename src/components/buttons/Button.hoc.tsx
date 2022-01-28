@@ -43,7 +43,7 @@ interface ButtonHocProps extends PadProps{
   button_type: BUTTON_TYPE;
 }
 
-const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type, input_handler, clearAll_handler, clear_handler}) => {
+const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type, input_handler, clearAll_handler, clear_handler, dot_handler}) => {
 
   const renderSwitch = () => {
     switch (button_type) {
@@ -92,6 +92,7 @@ const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type, input_handler, clear
         button_type === BUTTON_TYPE.NINE) input_handler(button_type);
     if (button_type === BUTTON_TYPE.ClEAR) clearAll_handler(button_type);
     if (button_type === BUTTON_TYPE.DELETE) clear_handler(button_type);
+    if (button_type === BUTTON_TYPE.DOT) dot_handler(button_type);
   }
 
   return (

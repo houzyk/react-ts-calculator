@@ -8,9 +8,10 @@ export interface PadProps {
   input_handler: (digit: digit_type) => void;
   clearAll_handler: (cmd: BUTTON_TYPE.ClEAR) => void;
   clear_handler: (cmd: BUTTON_TYPE.DELETE) => void;
+  dot_handler: (cmd: BUTTON_TYPE.DOT) => void
 }
 
-const Pad:React.FC<PadProps> = ({ input_handler, clearAll_handler, clear_handler}) => {
+const Pad:React.FC<PadProps> = ({ input_handler, clearAll_handler, clear_handler, dot_handler}) => {
 
   const buttons: BUTTON_TYPE[] = [];
   for (let i:BUTTON_TYPE = 0; i < 20; i++) buttons.push(i);
@@ -24,6 +25,7 @@ const Pad:React.FC<PadProps> = ({ input_handler, clearAll_handler, clear_handler
           input_handler={input_handler}
           clearAll_handler={clearAll_handler}
           clear_handler={clear_handler}
+          dot_handler={dot_handler}
         />
         )
       }

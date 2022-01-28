@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Display:React.FC<{display: number[]}> = ({ display }) => {
+const Display:React.FC<{display: (number | string)[]}> = ({ display }) => {
   return (
     <StyleWrapper>
       <div className="display">

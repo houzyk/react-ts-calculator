@@ -10,7 +10,7 @@ import { digit_type } from '../buttons/digit-button/DigitButton.component';
 import { BUTTON_TYPE } from '../buttons/Button.hoc';
 
 const Calculator:React.FC = () => {
-  const [display, setDisplay] = useState<number[]>([]);
+  const [display, setDisplay] = useState<(number | string)[]>([]);
 
   const [storedNum, setstoredNum] = useState<number>();
   const [isOperation, setisOperation] = useState<boolean>(false);
@@ -107,7 +107,9 @@ const Calculator:React.FC = () => {
     }
   }
 
-
+  const handleDot = (cmd: BUTTON_TYPE.DOT):void => {
+    if (!display.includes(".") && !(display.length === 0)) setDisplay([...display, "."]);
+  }
 
   return (
     <StyleWrapper>
@@ -116,6 +118,7 @@ const Calculator:React.FC = () => {
         input_handler={handleDigitInput}
         clearAll_handler={handleClearAll}
         clear_handler={handleClear}
+        dot_handler={handleDot}
       />
     </StyleWrapper>
   );
