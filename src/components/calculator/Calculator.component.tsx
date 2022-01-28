@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from "styled-components";
 
 // components
@@ -15,32 +15,31 @@ const Calculator:React.FC = () => {
   const [operation, setOperation] = useState<[operation_type?]>([]);
   const [currentOperation, setcurrentOperation] = useState<operation_type>();
 
+  useEffect(() => {
+    setstoredNum(+display.join(''));
+  }, [display]);
+  
   const handleOperation = (operation: operation_type):void => {
     if (storedNum) {
       switch (operation) {
         case BUTTON_TYPE.ADD:
             setDisplay([storedNum])
-            setstoredNum(storedNum);
           break;
 
         case BUTTON_TYPE.MULTIPLY:
           setDisplay([storedNum])
-          setstoredNum(storedNum);
           break;
 
         case BUTTON_TYPE.MINUS:
           setDisplay([storedNum])
-          setstoredNum(storedNum);
           break;
 
         case BUTTON_TYPE.POWER:
           setDisplay([storedNum ])
-          setstoredNum(storedNum );
           break;
 
         case BUTTON_TYPE.DIVIDE:
           setDisplay([storedNum])
-          setstoredNum(storedNum);
           break;
 
         default:
@@ -105,7 +104,7 @@ const Calculator:React.FC = () => {
   }
 
   const handleDot = (cmd: BUTTON_TYPE.DOT):void => {
-    if (!display.includes(".") && !(display.length === 0)) setDisplay([...display, "."]);
+    if (!display.includes(".") && display.length > 0) setDisplay([...display, "."]);
   }
 
   const handleSignChange = (cmd: BUTTON_TYPE.SIGN):void => {
@@ -114,7 +113,7 @@ const Calculator:React.FC = () => {
   }
 
   const handleEqual = (cmd: BUTTON_TYPE.EQUAL):void => {
-    setDisplay(storedNum.join());
+    storedNum ? setDisplay(storedNum.toString().split('')) : setDisplay([]);
   }
 
   return (
@@ -126,6 +125,7 @@ const Calculator:React.FC = () => {
         clear_handler={handleClear}
         dot_handler={handleDot}
         sign_change_handler = {handleSignChange}
+        equal_handler = {handleEqual}
       />
     </StyleWrapper>
   );
