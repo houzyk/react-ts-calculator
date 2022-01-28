@@ -4,6 +4,9 @@ import styled, { css } from "styled-components";
 const Display:React.FC<{display: string}> = ({ display }) => {
   return (
     <StyleWrapper>
+      <div className="display">
+        {display}
+      </div>
     </StyleWrapper>
   );
 }
@@ -13,6 +16,15 @@ const styles = css`
   width: 100%;
   border-radius: 7px;
   background-color: #040F16;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .display {
+    color: white;
+    text-align: right;
+    font-size: 5rem;
+    padding: 7px;
+  }
 `
 
 const StyleWrapper = styled.div`

@@ -8,7 +8,7 @@ import Pad from '../pad/Pad.component';
 import { operation_type } from '../buttons/operation-button/OperationsButton.component'
 
 const Calculator:React.FC = () => {
-  const [display, setDisplay] = useState<string>('');
+  const [display, setDisplay] = useState<string>('hello');
   const [storedNum, setstoredNum] = useState<number>();
   const [storedToCalcNum, setstoredToCalcNum] = useState<number>();
   const [isOperation, setisOperation] = useState<boolean>(false);
