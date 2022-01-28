@@ -98,12 +98,25 @@ const Calculator:React.FC = () => {
     }
   }
 
-  const handleClearAll = (clear: BUTTON_TYPE.ClEAR):void => setDisplay([]);
+  const handleClearAll = (cmd: BUTTON_TYPE.ClEAR):void => setDisplay([]);
+
+  const handleClear = (cmd: BUTTON_TYPE.DELETE): void => {
+    if (display.length > 0) {
+      display.pop();
+      setDisplay([...display]);
+    }
+  }
+
+
 
   return (
     <StyleWrapper>
       <Display display={display}/>
-      <Pad input_handler={handleDigitInput} clear_handler={handleClearAll}/>
+      <Pad
+        input_handler={handleDigitInput}
+        clearAll_handler={handleClearAll}
+        clear_handler={handleClear}
+      />
     </StyleWrapper>
   );
 }

@@ -6,10 +6,11 @@ import { digit_type } from "../buttons/digit-button/DigitButton.component"
 
 export interface PadProps {
   input_handler: (digit: digit_type) => void;
-  clear_handler: (cmd: BUTTON_TYPE.ClEAR) => void;
+  clearAll_handler: (cmd: BUTTON_TYPE.ClEAR) => void;
+  clear_handler: (cmd: BUTTON_TYPE.DELETE) => void;
 }
 
-const Pad:React.FC<PadProps> = ({ input_handler, clear_handler }) => {
+const Pad:React.FC<PadProps> = ({ input_handler, clearAll_handler, clear_handler}) => {
 
   const buttons: BUTTON_TYPE[] = [];
   for (let i:BUTTON_TYPE = 0; i < 20; i++) buttons.push(i);
@@ -21,7 +22,9 @@ const Pad:React.FC<PadProps> = ({ input_handler, clear_handler }) => {
           key={button}
           button_type={button}
           input_handler={input_handler}
-          clear_handler={clear_handler}/>
+          clearAll_handler={clearAll_handler}
+          clear_handler={clear_handler}
+        />
         )
       }
     </StyleWrapper>
