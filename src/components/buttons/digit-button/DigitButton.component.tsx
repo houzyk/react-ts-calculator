@@ -2,6 +2,10 @@ import React from "react";
 
 import { BUTTON_TYPE } from "../Button.hoc";
 
+/**
+  *@digit_type is the button symbol for a digit 0-9
+*/
+
 type digit_type =
               BUTTON_TYPE.ZERO |
               BUTTON_TYPE.ONE |
@@ -17,7 +21,7 @@ export interface DigitButtonProps {
   digit_type: digit_type
 }
 
-const DigitButton:React.FC<DigitButtonProps> = ({digit_type }) => {
+const DigitButton:React.FC<DigitButtonProps> = ({ digit_type }) => {
   return (
     <>
     </>

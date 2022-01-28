@@ -1,6 +1,6 @@
 import React from "react";
 
-const EqualsButton:React.FunctionComponent = () => {
+const EqualsButton:React.FC = () => {
   return (
     <>
     </>

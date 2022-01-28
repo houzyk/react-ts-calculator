@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Display:React.FC = () => {
+const Display:React.FC<{display: string}> = ({ display }) => {
   return (
     <StyleWrapper>
     </StyleWrapper>

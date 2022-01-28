@@ -1,6 +1,6 @@
 import React from "react";
 
-const ClearButton:React.FunctionComponent = () => {
+const ClearButton:React.FC = () => {
   return (
     <>
     </>

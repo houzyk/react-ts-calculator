@@ -1,6 +1,6 @@
 import React from "react";
 
-const DotButton:React.FunctionComponent = () => {
+const DotButton:React.FC = () => {
   return (
     <>
     </>

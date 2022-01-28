@@ -80,8 +80,12 @@ const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type }) => {
     }
   }
 
+  const handleInput = () => {
+
+  }
+
   return (
-    <StyleWrapper>
+    <StyleWrapper onClick={() => handleInput}>
       {renderSwitch()}
     </StyleWrapper>
   );

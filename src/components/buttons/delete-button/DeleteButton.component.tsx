@@ -1,6 +1,6 @@
 import React from "react";
 
-const DeleteButton:React.FunctionComponent = () => {
+const DeleteButton:React.FC = () => {
   return (
     <>
     </>
