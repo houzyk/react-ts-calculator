@@ -9,6 +9,7 @@ import DotButton from "./dot-button/DotButton.component";
 import EqualsButton from "./equals-button/EqualsButton.component";
 import OperationsButton from "./operation-button/OperationsButton.component";
 import SignButton from "./sign-button/SignButton.component";
+import { PadProps } from "../pad/Pad.component";
 
 /**
   *@button_type is the button symbol
@@ -37,11 +38,12 @@ export enum BUTTON_TYPE {
   EQUAL
   }
 
-interface ButtonHocProps {
+
+interface ButtonHocProps extends PadProps{
   button_type: BUTTON_TYPE;
 }
 
-const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type }) => {
+const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type, input_handler}) => {
 
   const renderSwitch = () => {
     switch (button_type) {
@@ -56,32 +58,38 @@ const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type }) => {
       case BUTTON_TYPE.DOT: return <DotButton />;
 
       // operations
-      case
-          BUTTON_TYPE.DIVIDE ||
-          BUTTON_TYPE.MULTIPLY ||
-          BUTTON_TYPE.ADD ||
-          BUTTON_TYPE.MINUS ||
-          BUTTON_TYPE.POWER: return <OperationsButton operation_type={button_type}/>;
+      case BUTTON_TYPE.DIVIDE: return <OperationsButton operation_type={button_type}/>;
+      case BUTTON_TYPE.MULTIPLY: return <OperationsButton operation_type={button_type}/>;
+      case BUTTON_TYPE.ADD: return <OperationsButton operation_type={button_type}/>;
+      case BUTTON_TYPE.MINUS: return <OperationsButton operation_type={button_type}/>;
+      case BUTTON_TYPE.POWER: return <OperationsButton operation_type={button_type}/>;
 
       // digits
-      case
-          BUTTON_TYPE.ZERO ||
-          BUTTON_TYPE.ONE ||
-          BUTTON_TYPE.TWO ||
-          BUTTON_TYPE.THREE ||
-          BUTTON_TYPE.FOUR ||
-          BUTTON_TYPE.FIVE ||
-          BUTTON_TYPE.SIX ||
-          BUTTON_TYPE.SEVEN ||
-          BUTTON_TYPE.EIGHT ||
-          BUTTON_TYPE.NINE : return <DigitButton digit_type={button_type}/>
-
+      case BUTTON_TYPE.ZERO: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.ONE: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.TWO: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.THREE: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.FOUR: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.FIVE: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.SIX: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.SEVEN: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.EIGHT: return <DigitButton digit_type={button_type}/>
+      case BUTTON_TYPE.NINE: return <DigitButton digit_type={button_type}/>
       default: return;
     }
   }
 
   const handleInput = () => {
-
+    if (button_type === BUTTON_TYPE.ZERO ||
+        button_type === BUTTON_TYPE.ONE ||
+        button_type === BUTTON_TYPE.TWO ||
+        button_type === BUTTON_TYPE.THREE ||
+        button_type === BUTTON_TYPE.FOUR ||
+        button_type === BUTTON_TYPE.FIVE ||
+        button_type === BUTTON_TYPE.SIX ||
+        button_type === BUTTON_TYPE.SEVEN ||
+        button_type === BUTTON_TYPE.EIGHT ||
+        button_type === BUTTON_TYPE.NINE) input_handler(button_type);
   }
 
   return (
@@ -95,6 +103,16 @@ const styles = css`
   background-color: black;
   border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .symbol {
+    color: white;
+    font-size: 25px;
+    font-weight: 900;
+    flex-grow: 0;
+  }
 `
 
 const StyleWrapper = styled.div`

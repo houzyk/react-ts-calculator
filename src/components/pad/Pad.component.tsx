@@ -2,15 +2,20 @@ import React from "react";
 import styled, { css } from "styled-components";
 import ButtonHOC from "../buttons/Button.hoc";
 import { BUTTON_TYPE } from "../buttons/Button.hoc";
+import { digit_type } from "../buttons/digit-button/DigitButton.component"
 
-const Pad:React.FC = () => {
+export interface PadProps {
+  input_handler: (digit: digit_type) => void
+}
+
+const Pad:React.FC<PadProps> = ({ input_handler }) => {
 
   const buttons: BUTTON_TYPE[] = [];
   for (let i:BUTTON_TYPE = 0; i < 20; i++) buttons.push(i);
 
   return (
     <StyleWrapper>
-      { buttons.map(button => <ButtonHOC key={button} button_type={button}/>) }
+      { buttons.map(button => <ButtonHOC key={button} button_type={button} input_handler={input_handler}/>) }
     </StyleWrapper>
   );
 }
