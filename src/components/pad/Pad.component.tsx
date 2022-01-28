@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import ButtonHOC from "../../HOC/button/Button.hoc";
-import { BUTTON_TYPE } from "../../HOC/button/Button.hoc";
+import ButtonHOC from "../buttons/Button.hoc";
+import { BUTTON_TYPE } from "../buttons/Button.hoc";
 
 const Pad:React.FC = () => {
-  
+
   const buttons: BUTTON_TYPE[] = [];
   for (let i = 0; i < 20; i++) buttons.push(i);
 
