@@ -3,11 +3,13 @@ import styled, { css } from "styled-components";
 
 // components
 import Display from '../display/Display.component';
+import Pad from '../pad/Pad.component';
 
 const Calculator:React.FC = () => {
   return (
     <StyleWrapper>
       <Display />
+      <Pad />
     </StyleWrapper>
   );
 }
