@@ -18,28 +18,32 @@ const Calculator:React.FC = () => {
   useEffect(() => {
     setstoredNum(+display.join(''));
   }, [display]);
+
+  useEffect(() => {
+    console.log(operation)
+  }, [operation]);
   
-  const handleOperation = (operation: operation_type):void => {
+  const handleOperation = (op: operation_type):void => {
     if (storedNum) {
-      switch (operation) {
+      switch (op) {
         case BUTTON_TYPE.ADD:
-            setDisplay([storedNum])
+          setOperation([BUTTON_TYPE.ADD])
           break;
 
         case BUTTON_TYPE.MULTIPLY:
-          setDisplay([storedNum])
+          setOperation([BUTTON_TYPE.MULTIPLY])
           break;
 
         case BUTTON_TYPE.MINUS:
-          setDisplay([storedNum])
+          setOperation([BUTTON_TYPE.MINUS])
           break;
 
         case BUTTON_TYPE.POWER:
-          setDisplay([storedNum ])
+          setOperation([BUTTON_TYPE.POWER])
           break;
 
         case BUTTON_TYPE.DIVIDE:
-          setDisplay([storedNum])
+          setOperation([BUTTON_TYPE.DIVIDE])
           break;
 
         default:
@@ -126,6 +130,8 @@ const Calculator:React.FC = () => {
         dot_handler={handleDot}
         sign_change_handler = {handleSignChange}
         equal_handler = {handleEqual}
+        operation_handler = {handleOperation}
+        is_operation = {operation}
       />
     </StyleWrapper>
   );

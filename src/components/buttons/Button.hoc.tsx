@@ -43,7 +43,7 @@ interface ButtonHocProps extends PadProps{
   button_type: BUTTON_TYPE;
 }
 
-const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type, input_handler, clearAll_handler, clear_handler, dot_handler, sign_change_handler, equal_handler}) => {
+const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type, input_handler, clearAll_handler, clear_handler, dot_handler, sign_change_handler, equal_handler, operation_handler, is_operation}) => {
 
   const renderSwitch = () => {
     switch (button_type) {
@@ -58,11 +58,11 @@ const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type, input_handler, clear
       case BUTTON_TYPE.DOT: return <DotButton />;
 
       // operations
-      case BUTTON_TYPE.DIVIDE: return <OperationsButton operation_type={button_type}/>;
-      case BUTTON_TYPE.MULTIPLY: return <OperationsButton operation_type={button_type}/>;
-      case BUTTON_TYPE.ADD: return <OperationsButton operation_type={button_type}/>;
-      case BUTTON_TYPE.MINUS: return <OperationsButton operation_type={button_type}/>;
-      case BUTTON_TYPE.POWER: return <OperationsButton operation_type={button_type}/>;
+      case BUTTON_TYPE.DIVIDE: return <OperationsButton operation_type={button_type} is_operation={is_operation}/>;
+      case BUTTON_TYPE.MULTIPLY: return <OperationsButton operation_type={button_type} is_operation={is_operation}/>;
+      case BUTTON_TYPE.ADD: return <OperationsButton operation_type={button_type} is_operation={is_operation}/>;
+      case BUTTON_TYPE.MINUS: return <OperationsButton operation_type={button_type} is_operation={is_operation}/>;
+      case BUTTON_TYPE.POWER: return <OperationsButton operation_type={button_type} is_operation={is_operation}/>;
 
       // digits
       case BUTTON_TYPE.ZERO: return <DigitButton digit_type={button_type}/>
@@ -95,6 +95,12 @@ const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type, input_handler, clear
     if (button_type === BUTTON_TYPE.DOT) dot_handler(button_type);
     if (button_type === BUTTON_TYPE.SIGN) sign_change_handler(button_type);
     if (button_type === BUTTON_TYPE.EQUAL) equal_handler(button_type);
+    if (button_type === BUTTON_TYPE.ADD ||
+      button_type === BUTTON_TYPE.MINUS ||
+      button_type === BUTTON_TYPE.DIVIDE ||
+      button_type === BUTTON_TYPE.MULTIPLY ||
+      button_type === BUTTON_TYPE.POWER) operation_handler(button_type);
+
   }
 
   return (
