@@ -114,7 +114,7 @@ const Calculator:React.FC = () => {
   }
 
   const handleEqual = (cmd: BUTTON_TYPE.EQUAL):void => {
-    setDisplay([]);
+    setDisplay(storedNum.join());
   }
 
   return (
