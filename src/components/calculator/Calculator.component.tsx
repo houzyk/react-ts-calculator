@@ -13,7 +13,6 @@ const Calculator:React.FC = () => {
   const [display, setDisplay] = useState<(number | string)[]>([]);
   const [storedNum, setstoredNum] = useState<number>();
   const [operation, setOperation] = useState<[operation_type?]>([]);
-  const [currentOperation, setcurrentOperation] = useState<operation_type>();
 
   useEffect(() => {
     setstoredNum(+display.join(''));
