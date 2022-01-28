@@ -12,15 +12,13 @@ import { BUTTON_TYPE } from '../buttons/Button.hoc';
 const Calculator:React.FC = () => {
   const [display, setDisplay] = useState<(number | string)[]>([]);
   const [storedNum, setstoredNum] = useState<number>();
+  const [calNum, setCalNum] = useState<number>();
+  const [result, setResult] = useState<number>();
   const [operation, setOperation] = useState<[operation_type?]>([]);
 
   useEffect(() => {
     setstoredNum(+display.join(''));
   }, [display]);
-
-  useEffect(() => {
-    console.log(operation)
-  }, [operation]);
   
   const handleOperation = (op: operation_type):void => {
     if (storedNum) {
@@ -51,45 +49,106 @@ const Calculator:React.FC = () => {
     }
   }
 
+  // TODO
   const handleDigitInput = (digit: digit_type):void => {
     switch (digit) {
       case BUTTON_TYPE.ZERO:
-        setDisplay([...display, 0])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 0])
+        }
         break;
 
       case BUTTON_TYPE.ONE:
-        setDisplay([...display, 1])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 1])
+        }
         break;
 
       case BUTTON_TYPE.TWO:
-        setDisplay([...display, 2])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 2])
+        }
         break;
 
       case BUTTON_TYPE.THREE:
-        setDisplay([...display, 3])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 3])
+        }        
         break;
 
       case BUTTON_TYPE.FOUR:
-        setDisplay([...display, 4])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 4])
+        }        
         break;
 
       case BUTTON_TYPE.FIVE:
-        setDisplay([...display, 5])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 5])
+        }        
         break;
 
       case BUTTON_TYPE.SIX:
-        setDisplay([...display, 6])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 6])
+        }        
         break;
 
       case BUTTON_TYPE.SEVEN:
-        setDisplay([...display, 7])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 7])
+        }        
         break;
 
       case BUTTON_TYPE.EIGHT:
-        setDisplay([...display, 8])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 8])
+        }        
         break;
       case BUTTON_TYPE.NINE:
-        setDisplay([...display, 9])
+        if (calNum) {
+          setResult(calNum + storedNum!);
+        } else if (operation.length !== 0 ) {
+          setCalNum(storedNum);
+        } else {
+          setDisplay([...display, 9])
+        }        
         break;
 
       default:
