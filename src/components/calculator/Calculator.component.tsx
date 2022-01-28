@@ -52,10 +52,45 @@ const Calculator:React.FC = () => {
     }
   }
 
-  const handleInput = (digit: digit_type) => {
+  const handleDigitInput = (digit: digit_type) => {
     switch (digit) {
+      case BUTTON_TYPE.ZERO:
+        setDisplay([...display, 0])
+        break;
+
       case BUTTON_TYPE.ONE:
         setDisplay([...display, 1])
+        break;
+
+      case BUTTON_TYPE.TWO:
+        setDisplay([...display, 2])
+        break;
+
+      case BUTTON_TYPE.THREE:
+        setDisplay([...display, 3])
+        break;
+
+      case BUTTON_TYPE.FOUR:
+        setDisplay([...display, 4])
+        break;
+
+      case BUTTON_TYPE.FIVE:
+        setDisplay([...display, 5])
+        break;
+
+      case BUTTON_TYPE.SIX:
+        setDisplay([...display, 6])
+        break;
+
+      case BUTTON_TYPE.SEVEN:
+        setDisplay([...display, 7])
+        break;
+
+      case BUTTON_TYPE.EIGHT:
+        setDisplay([...display, 8])
+        break;
+      case BUTTON_TYPE.NINE:
+        setDisplay([...display, 9])
         break;
 
       default:
@@ -63,10 +98,12 @@ const Calculator:React.FC = () => {
     }
   }
 
+  const handleClearAll = (clear: BUTTON_TYPE.ClEAR):void => setDisplay([]);
+
   return (
     <StyleWrapper>
       <Display display={display}/>
-      <Pad input_handler={handleInput}/>
+      <Pad input_handler={handleDigitInput} clear_handler={handleClearAll}/>
     </StyleWrapper>
   );
 }
