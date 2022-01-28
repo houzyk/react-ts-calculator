@@ -11,7 +11,6 @@ import { BUTTON_TYPE } from '../buttons/Button.hoc';
 
 const Calculator:React.FC = () => {
   const [display, setDisplay] = useState<(number | string)[]>([]);
-
   const [storedNum, setstoredNum] = useState<number>();
   const [isOperation, setisOperation] = useState<boolean>(false);
   const [currentOperation, setcurrentOperation] = useState<operation_type>();
@@ -111,6 +110,11 @@ const Calculator:React.FC = () => {
     if (!display.includes(".") && !(display.length === 0)) setDisplay([...display, "."]);
   }
 
+  const handleSignChange = (cmd: BUTTON_TYPE.SIGN) => {
+    const invertedNumber = +display.join('') * -1;
+    setDisplay([...invertedNumber.toString().split('')]);
+  }
+
   return (
     <StyleWrapper>
       <Display display={display}/>
@@ -119,6 +123,7 @@ const Calculator:React.FC = () => {
         clearAll_handler={handleClearAll}
         clear_handler={handleClear}
         dot_handler={handleDot}
+        sign_change_handler = {handleSignChange}
       />
     </StyleWrapper>
   );
