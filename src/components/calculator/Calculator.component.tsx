@@ -6,13 +6,45 @@ import Display from '../display/Display.component';
 import Pad from '../pad/Pad.component';
 
 import { operation_type } from '../buttons/operation-button/OperationsButton.component'
+import { BUTTON_TYPE } from '../buttons/Button.hoc';
 
 const Calculator:React.FC = () => {
-  const [display, setDisplay] = useState<string>('hello');
+  const [display, setDisplay] = useState<number[]>([]);
   const [storedNum, setstoredNum] = useState<number>();
   const [storedToCalcNum, setstoredToCalcNum] = useState<number>();
   const [isOperation, setisOperation] = useState<boolean>(false);
   const [currentOperation, setcurrentOperation] = useState<operation_type>();
+
+
+
+  const computeOperation = (operation: operation_type):void => {
+    if (storedNum && storedToCalcNum) {
+      switch (operation) {
+        case BUTTON_TYPE.ADD:
+            setDisplay([storedNum + storedToCalcNum])
+          break;
+
+        case BUTTON_TYPE.MULTIPLY:
+          setDisplay([storedNum * storedToCalcNum])
+          break;
+
+        case BUTTON_TYPE.MINUS:
+          setDisplay([storedNum - storedToCalcNum])
+          break;
+
+        case BUTTON_TYPE.POWER:
+          setDisplay([storedNum ** storedToCalcNum])
+          break;
+
+        case BUTTON_TYPE.DIVIDE:
+          setDisplay([storedNum / storedToCalcNum])
+          break;
+
+        default:
+          return;
+      }
+    }
+  }
 
   return (
     <StyleWrapper>

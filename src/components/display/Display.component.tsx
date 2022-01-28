@@ -1,11 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Display:React.FC<{display: string}> = ({ display }) => {
+const Display:React.FC<{display: number[]}> = ({ display }) => {
   return (
     <StyleWrapper>
       <div className="display">
-        {display}
+        {display.join('')}
       </div>
     </StyleWrapper>
   );
@@ -24,6 +24,7 @@ const styles = css`
     text-align: right;
     font-size: 5rem;
     padding: 7px;
+    overflow: hidden;
   }
 `
 
