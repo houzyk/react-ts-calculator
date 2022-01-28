@@ -12,13 +12,11 @@ import { BUTTON_TYPE } from '../buttons/Button.hoc';
 const Calculator:React.FC = () => {
   const [display, setDisplay] = useState<(number | string)[]>([]);
   const [storedNum, setstoredNum] = useState<number>();
-  const [isOperation, setisOperation] = useState<boolean>(false);
+  const [operation, setOperation] = useState<[operation_type?]>([]);
   const [currentOperation, setcurrentOperation] = useState<operation_type>();
 
-
-
   const handleOperation = (operation: operation_type):void => {
-    if (storedNum ) {
+    if (storedNum) {
       switch (operation) {
         case BUTTON_TYPE.ADD:
             setDisplay([storedNum])
@@ -51,7 +49,7 @@ const Calculator:React.FC = () => {
     }
   }
 
-  const handleDigitInput = (digit: digit_type) => {
+  const handleDigitInput = (digit: digit_type):void => {
     switch (digit) {
       case BUTTON_TYPE.ZERO:
         setDisplay([...display, 0])
@@ -110,9 +108,13 @@ const Calculator:React.FC = () => {
     if (!display.includes(".") && !(display.length === 0)) setDisplay([...display, "."]);
   }
 
-  const handleSignChange = (cmd: BUTTON_TYPE.SIGN) => {
+  const handleSignChange = (cmd: BUTTON_TYPE.SIGN):void => {
     const invertedNumber = +display.join('') * -1;
     setDisplay([...invertedNumber.toString().split('')]);
+  }
+
+  const handleEqual = (cmd: BUTTON_TYPE.EQUAL):void => {
+    setDisplay([]);
   }
 
   return (
