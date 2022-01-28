@@ -26,23 +26,23 @@ const Calculator:React.FC = () => {
     if (storedNum) {
       switch (op) {
         case BUTTON_TYPE.ADD:
-          setOperation([BUTTON_TYPE.ADD])
+          operation.length === 0 ? setOperation([BUTTON_TYPE.ADD]) : setOperation([])
           break;
 
         case BUTTON_TYPE.MULTIPLY:
-          setOperation([BUTTON_TYPE.MULTIPLY])
+          operation.length === 0 ? setOperation([BUTTON_TYPE.MULTIPLY]) : setOperation([])
           break;
 
         case BUTTON_TYPE.MINUS:
-          setOperation([BUTTON_TYPE.MINUS])
+          operation.length === 0 ? setOperation([BUTTON_TYPE.MINUS]) : setOperation([])
           break;
 
         case BUTTON_TYPE.POWER:
-          setOperation([BUTTON_TYPE.POWER])
+          operation.length === 0 ? setOperation([BUTTON_TYPE.POWER]) : setOperation([])
           break;
 
         case BUTTON_TYPE.DIVIDE:
-          setOperation([BUTTON_TYPE.DIVIDE])
+          operation.length === 0 ? setOperation([BUTTON_TYPE.DIVIDE]) : setOperation([])
           break;
 
         default:
