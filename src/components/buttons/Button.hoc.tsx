@@ -49,14 +49,34 @@ const ButtonHOC: React.FC<ButtonHocProps> = ({ button_type }) => {
       case BUTTON_TYPE.ClEAR: return <ClearButton />;
       case BUTTON_TYPE.DELETE: return <DeleteButton />;
 
-      case BUTTON_TYPE.DIVIDE || BUTTON_TYPE.MULTIPLY || BUTTON_TYPE.ADD || BUTTON_TYPE.MINUS || BUTTON_TYPE.POWER: return <OperationsButton />; // operations
 
       // symbols
       case BUTTON_TYPE.SIGN: return <SignButton />;
       case BUTTON_TYPE.EQUAL: return <EqualsButton />;
       case BUTTON_TYPE.DOT: return <DotButton />;
 
-      default: return <DigitButton />; // digits
+      // operations
+      case
+          BUTTON_TYPE.DIVIDE ||
+          BUTTON_TYPE.MULTIPLY ||
+          BUTTON_TYPE.ADD ||
+          BUTTON_TYPE.MINUS ||
+          BUTTON_TYPE.POWER: return <OperationsButton operation_type={button_type}/>;
+
+      // digits
+      case
+          BUTTON_TYPE.ZERO ||
+          BUTTON_TYPE.ONE ||
+          BUTTON_TYPE.TWO ||
+          BUTTON_TYPE.THREE ||
+          BUTTON_TYPE.FOUR ||
+          BUTTON_TYPE.FIVE ||
+          BUTTON_TYPE.SIX ||
+          BUTTON_TYPE.SEVEN ||
+          BUTTON_TYPE.EIGHT ||
+          BUTTON_TYPE.NINE : return <DigitButton digit_type={button_type}/>
+
+      default: return;
     }
   }
 

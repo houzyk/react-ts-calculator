@@ -6,7 +6,7 @@ import { BUTTON_TYPE } from "../buttons/Button.hoc";
 const Pad:React.FC = () => {
 
   const buttons: BUTTON_TYPE[] = [];
-  for (let i = 0; i < 20; i++) buttons.push(i);
+  for (let i:BUTTON_TYPE = 0; i < 20; i++) buttons.push(i);
 
   return (
     <StyleWrapper>

@@ -1,6 +1,19 @@
 import React from "react";
 
-const OperationsButton:React.FunctionComponent = () => {
+import { BUTTON_TYPE } from "../Button.hoc";
+
+type operation_type =
+                      BUTTON_TYPE.ADD |
+                      BUTTON_TYPE.POWER |
+                      BUTTON_TYPE.DIVIDE |
+                      BUTTON_TYPE.MINUS |
+                      BUTTON_TYPE.MULTIPLY
+
+interface OperationsButtonPropsType {
+  operation_type: operation_type
+}
+
+const OperationsButton:React.FC<OperationsButtonPropsType> = () => {
   return (
     <>
     </>
